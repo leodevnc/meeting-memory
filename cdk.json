@@ -1,0 +1,7 @@
+{
+  "app": "node --import tsx bin/meeting-memory.ts",
+  "context": {
+    "@aws-cdk/aws-s3:serverAccessLogsUseBucketPolicy": true,
+    "@aws-cdk/aws-lambda:useCdkManagedLogGroup": true
+  }
+}
