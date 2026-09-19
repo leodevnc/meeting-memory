@@ -16,5 +16,5 @@ export async function analyzeWithBedrock(transcript: string): Promise<MeetingAna
   }));
   const text = response.output?.message?.content?.find((block) => block.text)?.text;
   if (!text) throw new Error(`Bedrock returned no text output: ${response.stopReason ?? 'unknown'}`);
-  return parseAnalysis(text);
+  return parseAnalysis(text, transcript);
 }

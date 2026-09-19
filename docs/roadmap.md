@@ -12,7 +12,8 @@
 
 ## Milestone 2 - trustworthy extraction
 
-- [ ] verify every evidence fragment against normalized transcript
+- [x] verify every evidence fragment against normalized transcript
+- [x] multilingual evidence-grounding fixtures for Korean, English, and Japanese
 - [ ] evaluation dataset for Korean, English, Japanese meetings
 - [ ] precision/recall measures for decisions and actions
 - [ ] explicit retry endpoint and optimistic concurrency version

@@ -6,14 +6,14 @@ export const actionItemSchema = z.object({
   owner: z.string().max(120).nullable(),
   dueDate: z.string().date().nullable(),
   status: z.enum(['OPEN', 'DONE']),
-  evidence: z.string().max(500),
+  evidence: z.string().min(1).max(500),
 });
 
 export const meetingAnalysisSchema = z.object({
   title: z.string().min(1).max(160),
   summary: z.string().min(1).max(4000),
   topics: z.array(z.string().min(1).max(120)).max(12),
-  decisions: z.array(z.object({ text: z.string().min(1).max(500), evidence: z.string().max(500) })).max(30),
+  decisions: z.array(z.object({ text: z.string().min(1).max(500), evidence: z.string().min(1).max(500) })).max(30),
   actionItems: z.array(actionItemSchema).max(50),
   openQuestions: z.array(z.string().min(1).max(500)).max(30),
 });

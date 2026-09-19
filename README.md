@@ -19,6 +19,7 @@ Meeting Memory is an experiment in turning meeting audio into records that can b
 - A complete local flow using mock transcription and deterministic analysis
 - Non-deploying CDK and adapter examples that model Amazon Transcribe and Amazon Bedrock Converse integration
 - Summaries, topics, decisions, supporting evidence, action items, and open questions
+- Exact evidence grounding with Unicode, case, and whitespace normalization
 - Per-user meeting list and detail views, including action-item completion
 - Cognito JWT authentication, direct S3 uploads, and DynamoDB ownership partitions in the architecture prototype
 - A local mock transcription and analysis server with integration tests
@@ -96,7 +97,7 @@ Meetings may contain personal data or confidential company information. A real e
 
 - Correlating events through a job-name GSI is simple, but a dedicated job record or event store may be more suitable at larger scale.
 - Updating the full action-item array does not yet provide conflict control for concurrent edits.
-- The application does not yet verify mechanically that every evidence fragment returned by the LLM exists in the transcript.
+- Evidence grounding deliberately rejects paraphrases; a later evaluation will measure whether this strict boundary causes too many otherwise useful analyses to fail.
 - Browser uploads do not support resumable multipart uploads.
 
 ## License

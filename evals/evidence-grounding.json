@@ -1,0 +1,38 @@
+[
+  {
+    "name": "english exact fragment with case and whitespace differences",
+    "transcript": "[00:12] speaker_0: We will ship the beta on Friday.",
+    "evidence": "we will ship the beta   on friday.",
+    "expectedGrounded": true
+  },
+  {
+    "name": "korean exact fragment",
+    "transcript": "[01:03] speaker_1: 민수가 금요일까지 검색 설계를 검토해야 합니다.",
+    "evidence": "민수가 금요일까지 검색 설계를 검토해야 합니다.",
+    "expectedGrounded": true
+  },
+  {
+    "name": "japanese exact fragment",
+    "transcript": "[02:10] speaker_2: 来週までに議事録の形式を決めます。",
+    "evidence": "来週までに議事録の形式を決めます。",
+    "expectedGrounded": true
+  },
+  {
+    "name": "unicode compatibility normalization",
+    "transcript": "[03:00] speaker_0: ＡＰＩの仕様を更新します。",
+    "evidence": "apiの仕様を更新します。",
+    "expectedGrounded": true
+  },
+  {
+    "name": "unsupported decision",
+    "transcript": "[00:01] speaker_0: The launch date is still open.",
+    "evidence": "The team approved a launch on Monday.",
+    "expectedGrounded": false
+  },
+  {
+    "name": "empty evidence",
+    "transcript": "[00:01] speaker_0: No action was assigned.",
+    "evidence": "   ",
+    "expectedGrounded": false
+  }
+]
