@@ -14,8 +14,9 @@
 
 - [x] verify every evidence fragment against normalized transcript
 - [x] multilingual evidence-grounding fixtures for Korean, English, and Japanese
-- [ ] evaluation dataset for Korean, English, Japanese meetings
-- [ ] precision/recall measures for decisions and actions
+- [x] seed evaluation dataset for Korean, English, and Japanese meetings
+- [x] precision/recall/F1 and grounded-rate measures for decisions and actions
+- [ ] versioned model-output artifacts and larger reviewed evaluation dataset
 - [ ] explicit retry endpoint and optimistic concurrency version
 - [ ] CloudWatch metrics and alarms for latency, failures, DLQ depth
 

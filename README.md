@@ -40,8 +40,15 @@ Open `http://127.0.0.1:4173` in a browser. Local mode skips authentication and A
 ```bash
 npm run build
 npm test
+npm run eval
 npm run synth
 ```
+
+## Offline evaluations
+
+`npm run eval` scores checked-in English, Korean, and Japanese meeting fixtures without calling a model or any cloud service. Predictions are matched one-to-one against accepted evidence in the golden records. The report includes decision and action-item precision, recall, F1, and the share of predictions grounded in the transcript. CI currently requires at least 80% overall precision, recall, and grounded rate.
+
+The seed fixture intentionally contains one unsupported prediction and one missed decision, so the baseline is 83.3% for all three guarded metrics. These hand-authored predictions validate the evaluator mechanics; they are not evidence of real model quality. See [evaluations.md](docs/evaluations.md) for the contract and limitations.
 
 ## AWS architecture prototype
 
@@ -79,7 +86,7 @@ Browser ── POST /meetings/{id}/start        │
                  DynamoDB
 ```
 
-See [architecture.md](docs/architecture.md) for the detailed design and failure modes, [decisions.md](docs/decisions.md) for the reasoning behind key choices, and [roadmap.md](docs/roadmap.md) for planned experiments.
+See [architecture.md](docs/architecture.md) for the detailed design and failure modes, [decisions.md](docs/decisions.md) for the reasoning behind key choices, [evaluations.md](docs/evaluations.md) for the offline evaluation contract, and [roadmap.md](docs/roadmap.md) for planned experiments.
 
 ## Data and security boundaries
 

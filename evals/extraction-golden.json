@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "en-event-schema",
+      "language": "en",
+      "transcript": "[00:00] speaker_0: We will use the shared event schema for version one.\n[00:11] speaker_1: Maya will publish the schema by Friday.\n[00:20] speaker_0: The storage migration is still an open question.",
+      "expected": {
+        "decisions": [{ "id": "decision-event-schema", "acceptedEvidence": ["We will use the shared event schema for version one."] }],
+        "actionItems": [{ "id": "action-publish-schema", "acceptedEvidence": ["Maya will publish the schema by Friday."] }]
+      },
+      "predicted": {
+        "decisions": [
+          { "text": "Use one shared event schema in version one.", "evidence": "We will use the shared event schema for version one." },
+          { "text": "Migrate storage to Kafka.", "evidence": "The team approved a Kafka migration." }
+        ],
+        "actionItems": [{ "text": "Maya publishes the schema by Friday.", "evidence": "Maya will publish the schema by Friday." }]
+      }
+    },
+    {
+      "id": "ko-cache-policy",
+      "language": "ko",
+      "transcript": "[00:00] speaker_0: 캐시 TTL은 데이터 종류별로 정하기로 합의했습니다.\n[00:12] speaker_1: 지훈이 수요일까지 freshness 지표를 정의해야 합니다.\n[00:22] speaker_0: invalidation 방식은 다음 회의에서 결정하겠습니다.",
+      "expected": {
+        "decisions": [{ "id": "decision-domain-ttl", "acceptedEvidence": ["캐시 TTL은 데이터 종류별로 정하기로 합의했습니다."] }],
+        "actionItems": [{ "id": "action-freshness-metric", "acceptedEvidence": ["지훈이 수요일까지 freshness 지표를 정의해야 합니다."] }]
+      },
+      "predicted": {
+        "decisions": [],
+        "actionItems": [{ "text": "지훈이 수요일까지 freshness 지표를 정의한다.", "evidence": "지훈이 수요일까지 freshness 지표를 정의해야 합니다." }]
+      }
+    },
+    {
+      "id": "ja-retry-policy",
+      "language": "ja",
+      "transcript": "[00:00] speaker_0: 再試行は最大三回に決定します。\n[00:10] speaker_1: 田中さんが監視ダッシュボードを更新します。\n[00:18] speaker_0: 保持期間はまだ決まっていません。",
+      "expected": {
+        "decisions": [{ "id": "decision-three-retries", "acceptedEvidence": ["再試行は最大三回に決定します。"] }],
+        "actionItems": [{ "id": "action-update-dashboard", "acceptedEvidence": ["田中さんが監視ダッシュボードを更新します。"] }]
+      },
+      "predicted": {
+        "decisions": [{ "text": "再試行を最大三回にする。", "evidence": "再試行は最大三回に決定します。" }],
+        "actionItems": [{ "text": "田中さんが監視ダッシュボードを更新する。", "evidence": "田中さんが監視ダッシュボードを更新します。" }]
+      }
+    }
+  ]
+}

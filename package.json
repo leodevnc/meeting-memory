@@ -9,6 +9,7 @@
     "build": "node node_modules/typescript/bin/tsc --noEmit",
     "test": "TMPDIR=/tmp node --test --import tsx test/**/*.test.ts",
     "test:integration": "TMPDIR=/tmp node --test --import tsx test/integration.test.ts",
+    "eval": "TMPDIR=/tmp node --import tsx scripts/run-evals.ts",
     "synth": "TMPDIR=/tmp node node_modules/aws-cdk/bin/cdk synth --strict"
   },
   "dependencies": {
