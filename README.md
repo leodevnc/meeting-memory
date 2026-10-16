@@ -2,7 +2,9 @@
 
 Meeting Memory is an experiment in turning meeting audio into records that can be revisited and acted upon, rather than stopping at transcription. Record a meeting in the browser or upload an audio file to produce a speaker-aware, timestamped transcript. An LLM then structures the conversation into a summary, decisions, action items, and open questions. Action items remain manageable through completion.
 
-![Status](https://img.shields.io/badge/status-study%20in%20progress-ef5b3f)
+![Local meeting workspace](docs/workspace.png)
+
+The neutral interface keeps capture, history and grounded records visually separate. See [UI design and verification](docs/ui-design.md) for browser checks, local-mode boundaries and the dependency advisory observed during this update.
 
 ## Questions explored
 

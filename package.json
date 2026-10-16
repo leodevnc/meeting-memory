@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "TMPDIR=/tmp node --import tsx scripts/local-server.ts",
     "build": "node node_modules/typescript/bin/tsc --noEmit",
     "test": "TMPDIR=/tmp node --test --import tsx test/**/*.test.ts",
+    "test:e2e": "playwright test",
     "test:integration": "TMPDIR=/tmp node --test --import tsx test/integration.test.ts",
     "eval": "TMPDIR=/tmp node --import tsx scripts/run-evals.ts",
     "synth": "TMPDIR=/tmp node node_modules/aws-cdk/bin/cdk synth --strict"
@@ -24,6 +27,7 @@
     "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@types/aws-lambda": "^8.10.152",
     "@types/node": "^22.15.3",
     "aws-cdk": "2.1142.0",
