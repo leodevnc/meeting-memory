@@ -4,8 +4,6 @@ Meeting Memory is an experiment in turning meeting audio into records that can b
 
 ![Local meeting workspace](docs/workspace.png)
 
-The neutral interface keeps capture, history and grounded records visually separate. See [UI design and verification](docs/ui-design.md) for browser checks, local-mode boundaries and the dependency advisory observed during this update.
-
 ## Questions explored
 
 - How can a long-running workflow continue safely without holding an HTTP request open?
@@ -46,6 +44,16 @@ npm test
 npm run eval
 npm run synth
 ```
+
+### Browser tests
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:e2e
+```
+
+The suite starts a loopback mock server on port 4184; do not run two copies on that port. It covers upload, meeting review, action completion, transcript disclosure, keyboard navigation, and responsive layouts. It does not validate real microphone capture, transcription, or model quality. Rendering Korean or Japanese records requires system fonts with those glyphs.
 
 ## Offline evaluations
 
@@ -105,6 +113,8 @@ Meetings may contain personal data or confidential company information. A real e
 
 ## Known limitations
 
+- The deterministic local analyzer recognizes English and Korean keywords; it is a fixture aid, not a semantic extractor. Negation, tentative proposals, and arbitrary topics need a real extractor and separate quality checks.
+- Dependency review on 2026-10-16 found a high-severity `brace-expansion` advisory under `aws-cdk-lib` ([GHSA-qhr7-859c-m2p7](https://github.com/advisories/GHSA-qhr7-859c-m2p7)). Application exploitability has not been established; review a dependency update before using the infrastructure tooling with untrusted input.
 - Correlating events through a job-name GSI is simple, but a dedicated job record or event store may be more suitable at larger scale.
 - Updating the full action-item array does not yet provide conflict control for concurrent edits.
 - Evidence grounding deliberately rejects paraphrases; a later evaluation will measure whether this strict boundary causes too many otherwise useful analyses to fail.
