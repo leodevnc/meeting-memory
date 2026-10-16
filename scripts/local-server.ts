@@ -8,10 +8,10 @@ import type { Meeting } from '../src/core/model.js';
 const port = Number(process.env.PORT ?? 4173);
 const root = new URL('../web/', import.meta.url).pathname;
 const meetings = new Map<string, Meeting>();
-const sample = `[00:00] speaker_0: 오늘은 회의 기록 자동화의 첫 범위를 결정하겠습니다.
-[00:07] speaker_1: 우선 녹음, 전사, 요약, 결정사항과 액션아이템 관리까지 구현하기로 합의했습니다.
-[00:18] speaker_0: 다음 주 금요일까지 민수가 검색 설계를 검토해야 합니다.
-[00:27] speaker_1: 캘린더 연동은 다음 단계에서 다루면 어떨까요?`;
+const sample = `[00:00] speaker_0: Meeting records: initial scope
+[00:07] speaker_1: We agreed to include recording, transcription, summaries, decisions and follow-up tasks.
+[00:18] speaker_0: Action: Alex will review the search design by next Friday.
+[00:27] speaker_1: Should calendar integration be part of the next phase?`;
 
 export function createLocalServer() {
   return createServer(async (request, response) => {

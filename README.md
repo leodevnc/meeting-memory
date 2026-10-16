@@ -17,6 +17,7 @@ The neutral interface keeps capture, history and grounded records visually separ
 ## Current scope
 
 - Browser recording and audio uploads up to 500 MB
+- English-default interface, messages and local demo content; original meeting content is not automatically translated
 - Korean, English, Japanese, or automatic language detection
 - A complete local flow using mock transcription and deterministic analysis
 - Non-deploying CDK and adapter examples that model Amazon Transcribe and Amazon Bedrock Converse integration
@@ -37,7 +38,7 @@ npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:4173` in a browser. Local mode skips authentication and AWS calls, then analyzes a fixed transcript sample. It does not incur cloud costs.
+Open `http://127.0.0.1:4173` in a browser. Local mode skips authentication and AWS calls, then analyzes a fixed English transcript sample regardless of the uploaded audio or language selection. It does not incur cloud costs. The language selector retains auto-detection and Korean, English and Japanese options for the adapter prototype; it does not change the local sample.
 
 ```bash
 npm run build

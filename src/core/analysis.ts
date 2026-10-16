@@ -90,10 +90,10 @@ export function mockAnalysis(transcript: string): MeetingAnalysis {
   const lines = transcript.split(/\n+/).map((line) => line.trim()).filter(Boolean);
   const actionLines = lines.filter((line) => /해야|하기로|담당|action|todo/i.test(line));
   const analysis = meetingAnalysisSchema.parse({
-    title: lines[0]?.replace(/^\[[^\]]+\]\s*[^:]+:\s*/, '').slice(0, 80) || '새 회의',
+    title: lines[0]?.replace(/^\[[^\]]+\]\s*[^:]+:\s*/, '').slice(0, 80) || 'New meeting',
     summary: lines.slice(0, 3).join(' ').slice(0, 1000),
-    topics: ['회의 기록 자동화', '후속 작업'],
-    decisions: lines.filter((line) => /결정|합의|하기로/i.test(line)).slice(0, 5).map((text) => ({ text, evidence: text })),
+    topics: ['Meeting records', 'Follow-up tasks'],
+    decisions: lines.filter((line) => /결정|합의|하기로|\b(?:decided|agreed|decision)\b/i.test(line)).slice(0, 5).map((text) => ({ text, evidence: text })),
     actionItems: actionLines.slice(0, 8).map((text, index) => ({ id: stableActionId(text, index), task: text, owner: null, dueDate: null, status: 'OPEN', evidence: text })),
     openQuestions: lines.filter((line) => line.includes('?')).slice(0, 5),
   });

@@ -7,7 +7,7 @@ export function extensionFor(mime) { return mime.includes('mp4') ? 'm4a' : 'webm
 export class Recorder {
   constructor(onReady, onTick) { this.onReady = onReady; this.onTick = onTick; this.parts = []; this.startedAt = 0; this.timer = null; }
   async start() {
-    if (!navigator.mediaDevices?.getUserMedia || !globalThis.MediaRecorder) throw new Error('이 브라우저에서는 녹음을 사용할 수 없습니다.');
+    if (!navigator.mediaDevices?.getUserMedia || !globalThis.MediaRecorder) throw new Error('Recording is not supported in this browser.');
     this.stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
     const mime = preferredMime((type) => MediaRecorder.isTypeSupported(type));
     this.media = mime ? new MediaRecorder(this.stream, { mimeType: mime }) : new MediaRecorder(this.stream);
